@@ -1,1 +1,5 @@
-<div>Main</div>
+<ul>
+    <li *ngFor="let todo of todosService.todosSig()">
+        {{ todo.text }}
+    </li>
+</ul>

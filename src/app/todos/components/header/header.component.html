@@ -1,1 +1,8 @@
-<div>Header</div>
+<header>
+    <input
+        type="text"
+        [value]="text"
+        (keyup)="changeText($event)"
+        (keyup.enter)="addTodo()"
+    >
+</header>

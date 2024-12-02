@@ -27,4 +27,10 @@ export class TodosService {
     changeFilter(filter: FilterEnum): void {
         this.filterSig.set(filter);
     }
+
+    deleteTodo(id: string): void {
+        this.todosSig.update((todos) => {
+            return todos.filter((todo) => todo.id !== id);
+        });
+    }
 }

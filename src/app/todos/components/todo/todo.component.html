@@ -2,6 +2,11 @@
     <span>{{ todo.text }}</span>
     <span class="todo-item-buttons">
         <button class="todo-btn">EDIT</button>
-        <button class="todo-btn">DELETE</button>
+        <button
+            class="todo-btn"
+            (click)="deleteTodo(todo.id)"
+        >
+            DELETE
+        </button>
     </span>
 </li>

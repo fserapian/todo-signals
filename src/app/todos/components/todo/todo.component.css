@@ -16,3 +16,20 @@
 .todo-btn {
     cursor: pointer;
 }
+
+.edit-todo-wrapper {
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid black;
+    border-radius: .1rem;
+    margin-bottom: .5rem;
+    padding: 1rem;
+}
+
+.edit-todo-wrapper label {
+    margin-right: .5rem;
+}
+
+.close-btn {
+    cursor: pointer;
+}

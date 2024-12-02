@@ -1,7 +1,12 @@
-<li class="todo-item">
+<li class="todo-item" *ngIf="!isEditing">
     <span>{{ todo.text }}</span>
     <span class="todo-item-buttons">
-        <button class="todo-btn">EDIT</button>
+        <button
+            class="todo-btn"
+            (click)="editTodo()"
+        >
+            EDIT
+        </button>
         <button
             class="todo-btn"
             (click)="deleteTodo(todo.id)"
@@ -10,3 +15,10 @@
         </button>
     </span>
 </li>
+<div class="edit-todo-wrapper" *ngIf="isEditing">
+    <div>
+        <label for="edit-todo">Edit Todo</label>
+        <input id="edit-todo" type="text" [value]="todo.text">
+    </div>
+    <button class="close-btn" (click)="closeEditingMode()">CLOSE</button>
+</div>

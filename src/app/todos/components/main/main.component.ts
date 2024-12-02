@@ -12,6 +12,7 @@ import { TodoComponent } from '../todo/todo.component';
 })
 export class MainComponent {
     todosService = inject(TodosService);
+    editingTodo: string | null = null;
 
     visibleTodos = computed(() => {
         const todos = this.todosService.todosSig();
@@ -27,4 +28,8 @@ export class MainComponent {
 
         return todos;
     });
+
+    editTodo(todoId: string | null) {
+        this.editingTodo = todoId;
+    }
 }

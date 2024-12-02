@@ -1,0 +1,21 @@
+.footer-filter {
+    margin: .2rem;
+    width: 7rem;
+    cursor: pointer;
+}
+
+.selected {
+    background-color: #000;
+    color: #fff;
+}
+
+.hidden {
+    display: none;
+}
+
+.active-count {
+    padding: .3rem;
+    margin: .1rem;
+    width: 21.5rem;
+    font-family: sans-serif;
+}

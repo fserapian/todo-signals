@@ -1,1 +1,24 @@
-<div>Footer</div>
+<div class="footer" [ngClass]="{'hidden': emptyTodos()}">
+    <button
+        class="footer-filter"
+        [ngClass]="{'selected': currentFilter() === FilterEnum.All}"
+        (click)="updateFilter(FilterEnum.All)"
+    >
+        All
+    </button>
+    <button
+        class="footer-filter"
+        [ngClass]="{'selected': currentFilter() === FilterEnum.Active}"
+        (click)="updateFilter(FilterEnum.Active)"
+    >
+        Active
+    </button>
+    <button
+        class="footer-filter"
+        [ngClass]="{'selected': currentFilter() === FilterEnum.Completed}"
+        (click)="updateFilter(FilterEnum.Completed)"
+    >
+        Completed
+    </button>
+    <div class="active-count">Active: {{ activeCount() }}</div>
+</div>

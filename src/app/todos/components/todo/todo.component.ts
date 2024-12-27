@@ -1,7 +1,18 @@
-import {Component, EventEmitter, inject, Input, OnInit, Output} from '@angular/core';
-import {TodoInterface} from '../../types/todo.interface';
-import {TodosService} from '../../services/todos.service';
-import {CommonModule} from '@angular/common';
+import {
+    Component,
+    ElementRef,
+    EventEmitter,
+    inject,
+    Input,
+    OnChanges,
+    OnInit,
+    Output,
+    SimpleChanges,
+    ViewChild
+} from '@angular/core';
+import { TodoInterface } from '../../types/todo.interface';
+import { TodosService } from '../../services/todos.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'app-todos-todo',
@@ -9,10 +20,12 @@ import {CommonModule} from '@angular/common';
     styleUrl: './todo.component.css',
     imports: [CommonModule],
 })
-export class TodoComponent implements OnInit {
+export class TodoComponent implements OnInit, OnChanges {
     @Input({ required: true }) todo!: TodoInterface;
     @Input({ required: true }) isEditing!: boolean
     @Output() setEditingIdEvent = new EventEmitter<string | null>();
+
+    @ViewChild('textInput') textInput?: ElementRef; // To add autofocus
 
     editingText: string = '';
 
@@ -20,6 +33,14 @@ export class TodoComponent implements OnInit {
 
     ngOnInit(): void {
         this.editingText = this.todo.text;
+    }
+
+    ngOnChanges(changes: SimpleChanges) {
+        if (changes['isEditing'].currentValue) {
+            setTimeout(() => {
+                this.textInput?.nativeElement.focus();
+            }, 0)
+        }
     }
 
     deleteTodo(): void {

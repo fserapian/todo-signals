@@ -34,7 +34,9 @@
             type="text"
             [value]="editingText"
             (keyup)="changeText($event)"
-            (keyup.enter)="updateTodo()">
+            (keyup.enter)="updateTodo()"
+            #textInput
+        >
     </div>
     <button class="close-btn" (click)="closeEditingMode()">CLOSE</button>
 </div>

@@ -3,13 +3,13 @@
     <span class="todo-item-buttons">
         <button
             class="todo-btn"
-            (click)="editTodo()"
+            (click)="setTodoInEditMode()"
         >
             EDIT
         </button>
         <button
-            class="todo-btn"
-            (click)="deleteTodo(todo.id)"
+                class="todo-btn"
+                (click)="deleteTodo(todo.id)"
         >
             DELETE
         </button>
@@ -18,7 +18,12 @@
 <div class="edit-todo-wrapper" *ngIf="isEditing">
     <div>
         <label for="edit-todo">Edit Todo</label>
-        <input id="edit-todo" type="text" [value]="todo.text">
+        <input
+                id="edit-todo"
+                type="text"
+                [value]="editingText"
+                (keyup)="changeText($event)"
+                (keyup.enter)="updateTodo()">
     </div>
     <button class="close-btn" (click)="closeEditingMode()">CLOSE</button>
 </div>

@@ -1,4 +1,4 @@
-import { Component, computed, inject, Signal } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { TodosService } from '../../services/todos.service';
 import { CommonModule } from '@angular/common';
 import { FilterEnum } from '../../types/todo.enum';
@@ -12,7 +12,7 @@ import { TodoComponent } from '../todo/todo.component';
 })
 export class MainComponent {
     todosService = inject(TodosService);
-    editingTodo: string | null = null;
+    editingId: string | null = null;
 
     visibleTodos = computed(() => {
         const todos = this.todosService.todosSig();
@@ -29,7 +29,7 @@ export class MainComponent {
         return todos;
     });
 
-    editTodo(todoId: string | null) {
-        this.editingTodo = todoId;
+    setEditingId(todoId: string | null) {
+        this.editingId = todoId;
     }
 }

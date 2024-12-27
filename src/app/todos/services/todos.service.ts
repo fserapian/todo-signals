@@ -33,4 +33,10 @@ export class TodosService {
             return todos.filter((todo) => todo.id !== id);
         });
     }
+
+    updateTodo(id: string, text: string): void {
+        this.todosSig.update((todos) => {
+            return todos.map((todo) => todo.id === id ? { ...todo, text } : todo);
+        })
+    }
 }

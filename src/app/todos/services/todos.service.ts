@@ -39,4 +39,16 @@ export class TodosService {
             return todos.map((todo) => todo.id === id ? { ...todo, text } : todo);
         })
     }
+
+    toggleComplete(id: string): void {
+        this.todosSig.update((todos) => {
+            return todos.map((todo) => {
+                if (todo.id === id) {
+                    const isCompleted = !todo.isCompleted
+                    return { ...todo, isCompleted };
+                }
+                return todo;
+            })
+        })
+    }
 }

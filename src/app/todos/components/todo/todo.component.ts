@@ -22,8 +22,8 @@ export class TodoComponent implements OnInit {
         this.editingText = this.todo.text;
     }
 
-    deleteTodo(todoId: string): void {
-        this.todosService.deleteTodo(todoId);
+    deleteTodo(): void {
+        this.todosService.deleteTodo(this.todo.id);
     }
 
     setTodoInEditMode(): void {
@@ -42,5 +42,9 @@ export class TodoComponent implements OnInit {
     updateTodo(): void {
         this.todosService.updateTodo(this.todo.id, this.editingText);
         this.setEditingIdEvent.emit(null);
+    }
+
+    toggleComplete(): void {
+        this.todosService.toggleComplete(this.todo.id);
     }
 }

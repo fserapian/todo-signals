@@ -1,6 +1,17 @@
 <li class="todo-item" *ngIf="!isEditing">
-    <span>{{ todo.text }}</span>
-    <span class="todo-item-buttons">
+    <div class="todo-item-text">
+        <input
+            type="checkbox"
+            [checked]="todo.isCompleted"
+            (change)="toggleComplete()"
+        >
+        <label
+            [ngClass]="{ completed : todo.isCompleted }"
+        >
+            {{ todo.text }}
+        </label>
+    </div>
+    <div class="todo-item-buttons">
         <button
             class="todo-btn"
             (click)="setTodoInEditMode()"
@@ -8,22 +19,22 @@
             EDIT
         </button>
         <button
-                class="todo-btn"
-                (click)="deleteTodo(todo.id)"
+            class="todo-btn"
+            (click)="deleteTodo()"
         >
             DELETE
         </button>
-    </span>
+    </div>
 </li>
 <div class="edit-todo-wrapper" *ngIf="isEditing">
     <div>
         <label for="edit-todo">Edit Todo</label>
         <input
-                id="edit-todo"
-                type="text"
-                [value]="editingText"
-                (keyup)="changeText($event)"
-                (keyup.enter)="updateTodo()">
+            id="edit-todo"
+            type="text"
+            [value]="editingText"
+            (keyup)="changeText($event)"
+            (keyup.enter)="updateTodo()">
     </div>
     <button class="close-btn" (click)="closeEditingMode()">CLOSE</button>
 </div>

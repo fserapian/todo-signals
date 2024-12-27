@@ -6,6 +6,18 @@
     margin-bottom: .5rem;
 }
 
+.todo-item-text input {
+    cursor: pointer;
+}
+
+.todo-item-text label {
+    margin-left: 0.25rem;
+}
+
+.todo-item-text label.completed {
+    text-decoration: line-through;
+}
+
 .todo-item-buttons {
     display: flex;
     justify-content: center;

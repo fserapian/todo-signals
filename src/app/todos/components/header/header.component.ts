@@ -4,6 +4,7 @@ import { TodosService } from '../../services/todos.service';
 @Component({
     selector: 'app-todos-header',
     templateUrl: './header.component.html',
+    styleUrl: './header.component.css',
 })
 export class HeaderComponent {
     text = ''
